@@ -1,0 +1,23 @@
+schema: 1
+id: org.fleet.autodownload
+name: Auto Download
+description: Watch folders and IRC announces to enqueue magnets and torrents.
+version: 1.0.0
+api: ">=1.0.0 <2.0.0"
+engines:
+  - rtorrent
+capabilities:
+  - files.read
+  - files.write
+  - torrents.add
+  - torrents.actions
+  - storage.read
+  - storage.write
+  - http.fetch
+frontend:
+  type: declarative
+  entry: ui/extension.json
+backend:
+  type: process
+  executable: bin/autodownload-worker
+  protocol: jsonrpc-2

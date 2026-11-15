@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "extensionId": "org.fleet.autodownload",
+  "pages": [
+    {
+      "id": "autodownload",
+      "title": "Auto Download",
+      "route": "/ext/org.fleet.autodownload/autodownload"
+    }
+  ],
+  "actions": [
+    {
+      "id": "scan-now",
+      "label": "Scan watch dirs now",
+      "target": "global",
+      "primary": true
+    },
+    {
+      "id": "restart-irc",
+      "label": "Restart IRC",
+      "target": "global"
+    },
+    {
+      "id": "list-grabs",
+      "label": "Show grab history",
+      "target": "global"
+    },
+    {
+      "id": "irc-status",
+      "label": "Show IRC status",
+      "target": "global"
+    },
+    {
+      "id": "test-filter",
+      "label": "Test filter (see Configure UI)",
+      "target": "global"
+    },
+    {
+      "id": "export-config",
+      "label": "Export servers/filters JSON",
+      "target": "global"
+    }
+  ],
+  "panels": [
+    {
+      "id": "autodownload",
+      "title": "Auto Download",
+      "placement": "settings"
+    }
+  ],
+  "forms": [
+    {
+      "id": "autodl-settings-advanced",
+      "title": "Advanced DSL (fallback)",
+      "loadMethod": "ext.autodownload.getSettings",
+      "submitMethod": "ext.autodownload.saveSettings",
+      "fields": [
+        {
+          "name": "enabled",
+          "label": "Enabled",
+          "kind": "boolean"
+        },
+        {
+          "name": "paused",
+          "label": "Paused",
+          "kind": "boolean"
+        },
+        {
+          "name": "dryRun",
+          "label": "Dry run",
+          "kind": "boolean"
+        },
+        {
+          "name": "intervalSec",
+          "label": "Watch scan interval (seconds)",
+          "kind": "number",
+          "required": true
+        },
+        {
+          "name": "start",
+          "label": "Start torrents after add",
+          "kind": "boolean"
+        },
+        {
+          "name": "removeAfterAdd",
+          "label": "Remove watched file after successful add",
+          "kind": "boolean"
+        },
+        {
+          "name": "grabRetention",
+          "label": "Grab journal retention",
+          "kind": "number",
+          "help": "Max grab history entries (1–5000, default 500)."
+        },
+        {
+          "name": "dirsText",
+          "label": "Watch directories",
+          "kind": "textarea",
+          "help": "One absolute path per line under download_roots. Prefer the first-party Auto Download Configure UI.",
+          "rows": 6
+        },
+        {
+          "name": "ircServersText",
+          "label": "IRC servers",
+          "kind": "textarea",
+          "help": "One per line: id|host|port|tls|nick|pass|nickserv|channels|on",
+          "rows": 8
+        },
+        {
+          "name": "filtersText",
+          "label": "Filters",
+          "kind": "textarea",
+          "help": "One JSON object per line. Prefer the structured Auto Download Configure UI.",
+          "rows": 10
+        }
+      ],
+      "description": "IRC announce filters and grab history — use the first-party Configure view for day-to-day work."
+    }
+  ]
+}
